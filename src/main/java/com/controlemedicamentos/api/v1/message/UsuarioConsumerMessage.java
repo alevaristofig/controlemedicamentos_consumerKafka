@@ -22,5 +22,6 @@ public class UsuarioConsumerMessage {
 	@KafkaListener(topics = topic)
 	public void listening(UsuarioDTO usuarioDTO) {
 		logger.info("Mensagem recebida "+ usuarioDTO);
+		service.salvarUsuarioMensagem(usuarioDTO);
 	}
 }
