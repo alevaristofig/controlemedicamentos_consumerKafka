@@ -60,7 +60,7 @@ public class KafkaConsumerConfig {
 	}
 	
 	@Bean
-	public ConcurrentKafkaListenerContainerFactory<String, UsuarioDTO> usuarioKafkaListenerContainerFactory() {
+	public ConcurrentKafkaListenerContainerFactory<String, UsuarioDTO> kafkaListenerContainerFactoryUsuario() {
 		ConcurrentKafkaListenerContainerFactory<String, UsuarioDTO> factory = new 
 				ConcurrentKafkaListenerContainerFactory<>();
 		
@@ -70,7 +70,7 @@ public class KafkaConsumerConfig {
 	}
 	
 	@Bean
-	public ConcurrentKafkaListenerContainerFactory<String, PacienteDTO> pacienteKafkaListenerContainerFactory() {
+	public ConcurrentKafkaListenerContainerFactory<String, PacienteDTO> kafkaListenerContainerFactoryPaciente() {
 		ConcurrentKafkaListenerContainerFactory<String, PacienteDTO> factory = new 
 				ConcurrentKafkaListenerContainerFactory<>();
 		

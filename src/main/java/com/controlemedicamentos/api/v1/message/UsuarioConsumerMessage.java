@@ -19,7 +19,7 @@ public class UsuarioConsumerMessage {
 	
 	private final String topic = "usuarios";
 	
-	@KafkaListener(topics = topic)
+	@KafkaListener(topics = topic, groupId = "usuarios")
 	public void listening(UsuarioDTO usuarioDTO) {
 		logger.info("Mensagem Usuario recebida "+ usuarioDTO);
 		service.salvarUsuarioMensagem(usuarioDTO);
