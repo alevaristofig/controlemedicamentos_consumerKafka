@@ -20,7 +20,7 @@ public class PacienteConsumerMessage {
 	private final String topic = "pacientes";	
 	
 	@KafkaListener(topics = topic)
-	public void listening(PacienteDTO pacienteDTO) {
+	public void listeningPacientes(PacienteDTO pacienteDTO) {
 		logger.info("Mensagem Paciente Recebida " + pacienteDTO);
 		
 		service.salvarPacienteMensagem(pacienteDTO);
