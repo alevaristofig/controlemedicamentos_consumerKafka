@@ -22,8 +22,7 @@ public class PacienteConsumerMessage {
 	@KafkaListener(topics = topic, groupId = "pacientes")
 	public void listeningPacientes(PacienteDTO pacienteDTO) {
 		logger.info("Mensagem Paciente Recebida " + pacienteDTO);
-		
-		System.out.println(pacienteDTO);
-		//service.salvarPacienteMensagem(pacienteDTO);
+				
+		service.salvarPacienteMensagem(pacienteDTO);
 	}
 }

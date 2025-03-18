@@ -12,13 +12,13 @@ import org.springframework.kafka.annotation.EnableKafka;
 import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory;
 import org.springframework.kafka.core.ConsumerFactory;
 import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
+import org.springframework.kafka.support.converter.StringJsonMessageConverter;
 import org.springframework.kafka.support.serializer.JsonDeserializer;
 import org.springframework.kafka.support.serializer.JsonSerializer;
 
 import com.controlemedicamentos.api.v1.dto.PacienteDTO;
 import com.controlemedicamentos.api.v1.dto.UsuarioDTO;
 
-@EnableKafka
 @Configuration
 public class KafkaConsumerConfig {
 
@@ -77,5 +77,10 @@ public class KafkaConsumerConfig {
 		factory.setConsumerFactory(pacienteConsumerFactory());
 		
 		return factory;
+	}
+	
+	@Bean
+	public StringJsonMessageConverter jsonMessageConverter() {
+		return new StringJsonMessageConverter();
 	}
 }
