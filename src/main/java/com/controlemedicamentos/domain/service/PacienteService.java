@@ -1,5 +1,7 @@
 package com.controlemedicamentos.domain.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,10 @@ public class PacienteService {
 	
 	@Autowired
 	private PacienteInputDisassembler pacienteInputDisassembler;
+	
+	public List<Paciente> listar() {
+		return repository.findAll();
+	}
 	
 	public void salvarPacienteMensagem(PacienteDTO pacienteDTO) {
 		Paciente paciente = pacienteInputDisassembler.toDomainObject(pacienteDTO);
