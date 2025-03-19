@@ -32,4 +32,7 @@ public class PacienteDTO {
 	
 	@NotNull
 	private Integer idade;
+	
+	@NotNull
+	private UsuarioIdDTO usuario;
 }
