@@ -2,6 +2,8 @@ package com.controlemedicamentos.domain.model;
 
 import java.time.LocalDateTime;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -24,8 +26,11 @@ public class Aplicacao {
 	@EqualsAndHashCode.Include
 	private Long id;
 	
-	@NotNull
+	@CreationTimestamp
 	private LocalDateTime dataAplicacao;
+	
+	@NotNull
+	private char finalizado;
 	
 	@ManyToOne
 	@JoinColumn(name = "paciente_id")

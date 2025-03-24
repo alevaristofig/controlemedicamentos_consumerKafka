@@ -19,4 +19,6 @@ public class AplicacaoDTO {
 	private PacienteIdDTO paciente;
 	
 	private MedicamentoIdDTO medicamento;
+	
+	private char finalizado;
 }
