@@ -35,6 +35,9 @@ public class KafkaConsumerConfig {
 	@Value("${topic.medicamentos-consumer}")
 	private String topicMedicamentos;
 	
+	@Value("${topic.aplicaco-consumer}")
+	private String topicAplicacao;
+	
 	@Bean
 	public ConsumerFactory<String, UsuarioDTO> usuarioConsumerFactory() {
 		Map<String, Object> props = new HashMap<>();
