@@ -16,6 +16,7 @@ import org.springframework.kafka.support.converter.StringJsonMessageConverter;
 import org.springframework.kafka.support.serializer.JsonDeserializer;
 import org.springframework.kafka.support.serializer.JsonSerializer;
 
+import com.controlemedicamentos.api.v1.dto.AplicacaoDTO;
 import com.controlemedicamentos.api.v1.dto.MedicamentoDTO;
 import com.controlemedicamentos.api.v1.dto.PacienteDTO;
 import com.controlemedicamentos.api.v1.dto.UsuarioDTO;
@@ -81,6 +82,20 @@ public class KafkaConsumerConfig {
 	}
 	
 	@Bean
+	public ConsumerFactory<String, AplicacaoDTO> aplicacaoConsumerFactory() {
+		Map<String, Object> props = new HashMap<>();
+		
+		props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
+		props.put(ConsumerConfig.GROUP_ID_CONFIG, topicAplicacao);
+		props.put(JsonDeserializer.TRUSTED_PACKAGES, "*");
+		props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
+		props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
+		
+		return new DefaultKafkaConsumerFactory<>(props, new StringDeserializer(),
+				new JsonDeserializer<>(AplicacaoDTO.class,false));
+	}
+	
+	@Bean
 	public ConcurrentKafkaListenerContainerFactory<String, UsuarioDTO> kafkaListenerContainerFactoryUsuario() {
 		ConcurrentKafkaListenerContainerFactory<String, UsuarioDTO> factory = new 
 				ConcurrentKafkaListenerContainerFactory<>();
@@ -106,6 +121,16 @@ public class KafkaConsumerConfig {
 				ConcurrentKafkaListenerContainerFactory<>();
 		
 		factory.setConsumerFactory(medicamentoConsumerFactory());
+		
+		return factory;
+	}
+	
+	@Bean
+	public ConcurrentKafkaListenerContainerFactory<String, AplicacaoDTO> kafkaListenerContainerFactoryAplicacao() {
+		ConcurrentKafkaListenerContainerFactory<String, AplicacaoDTO> factory = new 
+				ConcurrentKafkaListenerContainerFactory<>();
+		
+		factory.setConsumerFactory(aplicacaoConsumerFactory());
 		
 		return factory;
 	}
