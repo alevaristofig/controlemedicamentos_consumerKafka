@@ -4,11 +4,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.controlemedicamentos.api.v1.assembler.AplicacaoModelAssembler;
 import com.controlemedicamentos.api.v1.dto.AplicacaoDTO;
+import com.controlemedicamentos.api.v1.dto.AplicacaoModelDTO;
 import com.controlemedicamentos.domain.model.Aplicacao;
 import com.controlemedicamentos.domain.service.AplicacaoService;
 
@@ -22,7 +24,8 @@ public class AplicacaoController {
 	@Autowired
 	private AplicacaoService service;
 	
-	public List<AplicacaoDTO> listar() {
+	@GetMapping
+	public List<AplicacaoModelDTO> listar() {
 		List<Aplicacao> aplicacoes = service.listar();
 		
 		return aplicacaoModelAssembler.toCollectionModel(aplicacoes);
