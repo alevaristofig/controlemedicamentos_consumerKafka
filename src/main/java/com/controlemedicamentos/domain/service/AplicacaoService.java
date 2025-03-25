@@ -1,5 +1,7 @@
 package com.controlemedicamentos.domain.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +20,10 @@ public class AplicacaoService {
 	
 	@Autowired
 	private AplicacaoRepository repository;
+	
+	public List<Aplicacao> listar() {
+		return repository.findAll();
+	}
 	
 	@Transactional
 	public void salvarAplicacaoMensagem(AplicacaoDTO aplicacaoDTO) {
