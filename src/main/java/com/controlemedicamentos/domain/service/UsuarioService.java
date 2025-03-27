@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.controlemedicamentos.api.v1.assembler.UsuarioInputDisassembler;
 import com.controlemedicamentos.api.v1.dto.UsuarioDTO;
+import com.controlemedicamentos.domain.exception.UsuarioNaoEncontradoException;
 import com.controlemedicamentos.domain.model.Usuario;
 import com.controlemedicamentos.domain.repository.UsuarioRepository;
 
@@ -23,6 +24,11 @@ public class UsuarioService {
 	
 	public List<Usuario> listar() {
 		return repository.findAll();
+	}
+	
+	public Usuario buscarOuFalhar(Long id) {
+		return repository.findById(id)
+				.orElseThrow(() -> new UsuarioNaoEncontradoException(id));
 	}
 	
 	@Transactional

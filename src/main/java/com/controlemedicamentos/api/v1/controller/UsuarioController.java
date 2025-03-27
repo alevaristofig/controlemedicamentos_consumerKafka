@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,5 +30,12 @@ public class UsuarioController {
 		List<Usuario> usuarios = service.listar();
 		
 		return usuarioModelAssembler.toCollectionModel(usuarios);
+	}
+	
+	@GetMapping("/{id}")
+	public UsuarioDTO buscar(@PathVariable @Validated Long id) {
+		Usuario usuario = service.buscarOuFalhar(id);
+		
+		return usuarioModelAssembler.toModel(usuario);
 	}
 }
