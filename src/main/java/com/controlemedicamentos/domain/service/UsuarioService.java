@@ -10,6 +10,8 @@ import com.controlemedicamentos.api.v1.dto.UsuarioDTO;
 import com.controlemedicamentos.domain.model.Usuario;
 import com.controlemedicamentos.domain.repository.UsuarioRepository;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class UsuarioService {
 
@@ -19,13 +21,15 @@ public class UsuarioService {
 	@Autowired
 	private UsuarioInputDisassembler usuarioInputDisassembler;
 	
+	public List<Usuario> listar() {
+		return repository.findAll();
+	}
+	
+	@Transactional
 	public void salvarUsuarioMensagem(UsuarioDTO usuarioDTO) {
 		Usuario usuario = usuarioInputDisassembler.toDomainObject(usuarioDTO);
 		
 		repository.save(usuario);				
 	}
 	
-	public List<Usuario> listar() {
-		return repository.findAll();
-	}
 }
