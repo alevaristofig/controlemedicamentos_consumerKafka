@@ -26,9 +26,9 @@ public class UsuarioService {
 		return repository.findAll();
 	}
 	
-	public Usuario buscarOuFalhar(Long id) {
-		return repository.findById(id)
-				.orElseThrow(() -> new UsuarioNaoEncontradoException(id));
+	public Usuario buscarOuFalhar(Long usuarioId) {
+		return repository.findById(usuarioId)
+				.orElseThrow(() -> new UsuarioNaoEncontradoException(usuarioId));
 	}
 	
 	@Transactional
