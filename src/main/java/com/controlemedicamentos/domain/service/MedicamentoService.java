@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.controlemedicamentos.api.v1.assembler.MedicamentoInputDisassembler;
 import com.controlemedicamentos.api.v1.dto.MedicamentoDTO;
+import com.controlemedicamentos.domain.exception.MedicamentoNaoEncontradoException;
 import com.controlemedicamentos.domain.model.Medicamento;
 import com.controlemedicamentos.domain.repository.MedicamentoRepository;
 
@@ -23,6 +24,11 @@ public class MedicamentoService {
 	
 	public List<Medicamento> listar() {
 		return repository.findAll();
+	}
+	
+	public Medicamento buscarOuFalhar(Long id) {
+		return repository.findById(id)
+				.orElseThrow(() -> new MedicamentoNaoEncontradoException(id));
 	}
 	
 	@Transactional
