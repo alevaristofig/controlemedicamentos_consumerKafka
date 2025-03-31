@@ -32,7 +32,7 @@ public class PacienteController {
 	}
 	
 	@GetMapping("/{id}")
-	public PacienteDTO buscar(@PathVariable Long id) {
+	public PacienteDTO buscar(@PathVariable("id") Long id) {
 		Paciente paciente = service.buscarOuFalhar(id);
 		
 		return pacienteModelAssembler.toModel(paciente);
