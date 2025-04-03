@@ -38,4 +38,9 @@ public class UsuarioService {
 		repository.save(usuario);				
 	}
 	
+	@Transactional
+	public Usuario atualizar(Usuario usuario) {		
+		return repository.save(usuario);				
+	}
+	
 }

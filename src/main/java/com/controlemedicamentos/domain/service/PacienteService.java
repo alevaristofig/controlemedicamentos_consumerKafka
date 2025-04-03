@@ -33,6 +33,11 @@ public class PacienteService {
 		repository.save(paciente);
 	}
 	
+	@Transactional
+	public Paciente atualizar(Paciente paciente) {
+		return repository.save(paciente);
+	}
+	
 	public Paciente buscarOuFalhar(Long id) {
 		return repository.findById(id)
 				.orElseThrow(() -> new PacienteNaoEncontradoException(id));

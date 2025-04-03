@@ -16,4 +16,8 @@ public class PacienteInputDisassembler {
 	public Paciente toDomainObject(PacienteDTO pacienteDTO) {
 		return mapper.map(pacienteDTO, Paciente.class);
 	}
+	
+	public void toCopyDomain(PacienteDTO pacienteDTO, Paciente paciente) {
+		mapper.map(pacienteDTO, paciente);
+	}
 }
