@@ -49,6 +49,8 @@ public class PacienteController {
 	public PacienteDTO atualizar(@PathVariable("id") Long id, @RequestBody @Validated PacienteDTO pacienteDTO) {
 		Paciente paciente = service.buscarOuFalhar(id);
 		
+		pacienteDTO.setId(paciente.getId());
+		
 		pacienteInputDisassembler.toCopyDomain(pacienteDTO, paciente);
 		
 		paciente = service.atualizar(paciente);
