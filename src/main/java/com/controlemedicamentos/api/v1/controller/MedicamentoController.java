@@ -48,6 +48,8 @@ public class MedicamentoController {
 	public MedicamentoDTO atualizar(@PathVariable("id") Long id, @RequestBody MedicamentoDTO medicamentoDTO) {
 		Medicamento medicamento = service.buscarOuFalhar(id);
 		
+		medicamentoDTO.setId(medicamento.getId());
+		
 		medicamentoInputDisassembler.toCopyDomain(medicamentoDTO, medicamento);
 		
 		medicamento = service.atualizar(medicamento);
