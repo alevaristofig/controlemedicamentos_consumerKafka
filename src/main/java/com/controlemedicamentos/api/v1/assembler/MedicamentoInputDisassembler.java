@@ -16,4 +16,8 @@ public class MedicamentoInputDisassembler {
 	public Medicamento toDomainObject(MedicamentoDTO medicamentoDTO) {
 		return mapper.map(medicamentoDTO, Medicamento.class);
 	}
+	
+	public void toCopyDomain(MedicamentoDTO medicamentoDTO, Medicamento medicamento) {
+		mapper.map(medicamentoDTO, medicamento);
+	}
 }

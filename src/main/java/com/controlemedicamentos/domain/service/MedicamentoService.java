@@ -37,4 +37,9 @@ public class MedicamentoService {
 		
 		repository.save(medicamento);
 	}
+	
+	@Transactional
+	public Medicamento atualizar(Medicamento medicamento) {
+		return repository.save(medicamento);
+	}
 }
