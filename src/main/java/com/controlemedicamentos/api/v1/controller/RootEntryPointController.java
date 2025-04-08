@@ -21,6 +21,8 @@ public class RootEntryPointController {
 		var rootEntryPointModel = new RootEntryPointModel();
 		
 		rootEntryPointModel.add(links.linkToPacientes("pacientes"));
+		rootEntryPointModel.add(links.linkToMedicamentos("medicamentos"));
+		rootEntryPointModel.add(links.linkToAplicacao("aplicacao"));
 		
 		return rootEntryPointModel;
 	}

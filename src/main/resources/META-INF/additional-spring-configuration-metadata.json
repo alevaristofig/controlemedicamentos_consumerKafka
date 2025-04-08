@@ -73,5 +73,10 @@
     "name": "topic.aplicaco-consumer",
     "type": "java.lang.String",
     "description": "A description for 'topic.aplicaco-consumer'"
+  },
+  {
+    "name": "topic.usuario-consumer",
+    "type": "java.lang.String",
+    "description": "A description for 'topic.usuario-consumer'"
   }
 ]}
