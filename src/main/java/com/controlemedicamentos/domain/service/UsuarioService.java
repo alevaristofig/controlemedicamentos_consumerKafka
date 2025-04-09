@@ -43,4 +43,9 @@ public class UsuarioService {
 		return repository.save(usuario);				
 	}
 	
+	@Transactional
+	public void remover(Usuario usuario) {
+		repository.delete(usuario);
+	}
+	
 }

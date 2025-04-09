@@ -3,6 +3,8 @@ package com.controlemedicamentos.domain.model;
 import java.time.LocalDateTime;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -52,6 +54,7 @@ public class Paciente {
 	
 	@JsonIgnore
 	@ManyToOne
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Usuario usuario;
 	
 	@CreationTimestamp
