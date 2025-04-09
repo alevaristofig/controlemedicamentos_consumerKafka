@@ -9,9 +9,18 @@ import org.springframework.stereotype.Component;
 import com.controlemedicamentos.api.v1.controller.AplicacaoController;
 import com.controlemedicamentos.api.v1.controller.MedicamentoController;
 import com.controlemedicamentos.api.v1.controller.PacienteController;
+import com.controlemedicamentos.api.v1.controller.UsuarioController;
 
 @Component
 public class ControleRemediosConsumerLinks {
+	
+	public Link linkToUsuarios(String rel) {
+		return linkTo(UsuarioController.class).withRel(rel);
+	}
+	
+	public Link linkToUsuarios() {
+		return linkToUsuarios(IanaLinkRelations.SELF.value());
+	}
 
 	public Link linkToPacientes(String rel) {
 		return linkTo(PacienteController.class).withRel(rel);

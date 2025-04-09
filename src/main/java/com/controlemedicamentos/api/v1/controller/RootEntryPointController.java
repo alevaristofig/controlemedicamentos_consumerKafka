@@ -20,6 +20,7 @@ public class RootEntryPointController {
 	public RootEntryPointModel root() {
 		var rootEntryPointModel = new RootEntryPointModel();
 		
+		rootEntryPointModel.add(links.linkToUsuarios("usuarios"));
 		rootEntryPointModel.add(links.linkToPacientes("pacientes"));
 		rootEntryPointModel.add(links.linkToMedicamentos("medicamentos"));
 		rootEntryPointModel.add(links.linkToAplicacao("aplicacao"));
