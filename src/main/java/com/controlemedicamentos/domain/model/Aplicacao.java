@@ -34,13 +34,11 @@ public class Aplicacao {
 	@NotNull
 	private char finalizado;
 	
-	@ManyToOne
-	@OnDelete(action = OnDeleteAction.CASCADE)
+	@ManyToOne	
 	@JoinColumn(name = "paciente_id")
 	private Paciente paciente;
 	
-	@ManyToOne
-	@OnDelete(action = OnDeleteAction.CASCADE)
+	@ManyToOne	
 	@JoinColumn(name = "medicamento_id")
 	private Medicamento medicamento;
 }

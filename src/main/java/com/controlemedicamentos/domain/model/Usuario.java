@@ -8,6 +8,7 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -49,7 +50,7 @@ public class Usuario {
 	@UpdateTimestamp
 	private LocalDateTime dataAtualizacao;
 	
-	@OneToMany
+	@OneToMany(cascade = CascadeType.REMOVE)	
 	@JoinColumn(name = "usuario_id")
 	private List<Paciente> pacientes;
 }
