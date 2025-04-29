@@ -42,4 +42,9 @@ public class PacienteService {
 		return repository.findById(id)
 				.orElseThrow(() -> new PacienteNaoEncontradoException(id));
 	}
+	
+	@Transactional
+	public void remover(Paciente paciente) {
+		repository.delete(paciente);
+	}
 }

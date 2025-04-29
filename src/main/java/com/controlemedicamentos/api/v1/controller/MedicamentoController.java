@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -55,5 +56,12 @@ public class MedicamentoController {
 		medicamento = service.atualizar(medicamento);
 		
 		return medicamentoModelAssembler.toModel(medicamento);
+	}
+	
+	@DeleteMapping("/{id}")
+	public void remover(@PathVariable("id") Long id) {
+		Medicamento medicamento = service.buscarOuFalhar(id);
+		
+		service.remover(medicamento);
 	}
 }

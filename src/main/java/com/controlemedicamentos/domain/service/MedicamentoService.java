@@ -42,4 +42,9 @@ public class MedicamentoService {
 	public Medicamento atualizar(Medicamento medicamento) {
 		return repository.save(medicamento);
 	}
+	
+	@Transactional
+	public void remover(Medicamento medicamento) {
+		repository.delete(medicamento);
+	}
 }
