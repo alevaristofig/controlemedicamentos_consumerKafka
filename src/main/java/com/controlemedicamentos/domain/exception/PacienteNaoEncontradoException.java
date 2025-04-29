@@ -9,7 +9,7 @@ public class PacienteNaoEncontradoException extends EntidadeNaoEncontradaExcepti
 	}
 	
 	public PacienteNaoEncontradoException(Long id) {
-		this(String.format("Não existe um cadastro de paciente com o id %d", id, id));
+		this(String.format("Não existe um cadastro de paciente com o id %d", id));
 	}
 
 
